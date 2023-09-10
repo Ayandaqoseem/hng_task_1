@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        div {
+            width: 300px;
+            height: 400px;
+            padding: 20px;
+            margin-left: 40%;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            margin-top: 50px;
+            text-align: center;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+        img {
+            max-width: 150px;
+            border-radius: 50%;
+        }
+        button {
+            height: 40px;
+            width: 200px;
+            padding: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            color: wheat;
+            background-color: brown;
+        }
+        button:hover {
+            border:2px solid brown;
+            background-color: transparent;
+            color: brown;
+        }
+    </style>
+    <title>My Landing Page</title>
+</head>
+<body>
+    <div>
+        <p data-testid="slackUserName">Abu_hafsoh</p>
+        <img src="./img.jpg" data-testid="slackDisplayImage" alt="Abu_hafsoh">
+        <p data-testid="currentDayOfTheWeek"></p>
+        <p data-testid="currentUTCTime"></p>
+        <p data-testid="myTrack">Frontend</p>
+        <a href="" data-testid="githubURL">
+            <button>My Git Repo</button>
+        </a>
+    </div>
+
+    <script>
+        function updateCurrentDay() {
+            const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+            const currentDate = new Date();
+            const currentDay = days[currentDate.getDay()];
+            
+            if (currentDay === 'Saturday') {
+                document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = "Saturday";
+            } else {
+                document.querySelector('[data-testid="currentDayOfTheWeek"]').textContent = currentDay;
+            } 
+                
+            
+        }
+
+        function updateCurrentUTCTime() {
+            const currentUTCTime = Date.now()
+            document.querySelector('[data-testid="currentUTCTime"]').textContent = currentUTCTime;
+        }
+
+
+        updateCurrentDay()
+        updateCurrentUTCTime()
+
+        // setInterval(updateCurrentDay, 60000);
+        // setInterval(updateCurrentUTCTime, 1000);
+    </script>
+</body>
+</html>
